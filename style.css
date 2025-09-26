@@ -1,0 +1,99 @@
+/* ========== Research Lab Minimal Theme ========== */
+:root{
+  --bg:#f6f7fb;
+  --paper:#ffffff;
+  --ink:#0f172a;
+  --muted:#64748b;
+  --rule:#e5e7eb;
+  --accent:#0ea5a4; /* Teal */
+  --accent-2:#2563eb; /* Link hover */
+  --radius:14px;
+  --shadow:0 2px 8px rgba(15,23,42,.06), 0 18px 40px rgba(15,23,42,.07);
+  --maxw:980px;
+  --serif:"IBM Plex Serif", Georgia, "Times New Roman", serif;
+  --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+*{box-sizing:border-box}
+html{font-size:16px}
+body{
+  margin:0; color:var(--ink); background:var(--bg);
+  font-family:var(--sans); line-height:1.75;
+}
+a{color:var(--accent-2); text-decoration:none}
+a:hover{opacity:.9}
+
+.container{max-width:var(--maxw); margin:0 auto; padding:20px}
+
+/* ===== Header / Nav ===== */
+.site-header{
+  background:linear-gradient(180deg,#ffffff, #f3f6fb 70%);
+  border-bottom:1px solid var(--rule);
+}
+.brand{display:flex; align-items:center; gap:14px; padding:14px 0}
+.brand__logo{
+  width:40px; height:40px; border-radius:10px;
+  background:conic-gradient(from 120deg,#14b8a6,#06b6d4,#22d3ee,#14b8a6);
+  box-shadow:var(--shadow);
+}
+.brand__title{font-family:var(--serif); font-size:1.35rem; font-weight:700; letter-spacing:.2px}
+.brand__subtitle{color:var(--muted); font-size:.92rem}
+.nav{display:flex; gap:12px; flex-wrap:wrap; padding-bottom:10px}
+.nav a{
+  color:var(--ink); padding:8px 12px; border-radius:10px
+}
+.nav a:hover{background:#eef2f7}
+
+/* ===== Hero ===== */
+.hero{
+  margin-top:18px; padding:28px; border-radius:var(--radius);
+  background:var(--paper); border:1px solid var(--rule); box-shadow:var(--shadow);
+}
+.hero h1{margin:0 0 8px 0; font-family:var(--serif)}
+.hero p{color:var(--muted); margin-top:6px}
+
+/* ===== Card/Paper ===== */
+.paper{
+  margin-top:18px; padding:28px; border-radius:var(--radius);
+  background:var(--paper); border:1px solid var(--rule); box-shadow:var(--shadow);
+}
+.paper h2,.paper h3{font-family:var(--serif); letter-spacing:.2px}
+.paper h2{font-size:1.35rem; margin-top:0}
+.paper h3{font-size:1.15rem; color:#0f172a}
+
+.callout{
+  background:#ecfeff; border:1px solid #a5f3fc; color:#0e7490;
+  padding:12px 14px; border-radius:10px
+}
+
+/* ===== Buttons ===== */
+.btn{
+  display:inline-block; color:#fff; background:var(--accent);
+  padding:10px 16px; border-radius:12px; font-weight:700;
+  box-shadow:0 6px 20px rgba(14,165,164,.25);
+}
+.btn.secondary{background:#111827}
+.btn + .btn{margin-left:10px}
+
+/* ===== Code Block ===== */
+pre{
+  background:#0b1020; color:#e2e8f0; border:1px solid #0b1220;
+  padding:16px; border-radius:12px; overflow:auto; font-family:var(--mono); font-size:.92rem
+}
+
+/* ===== Footer ===== */
+.site-footer{
+  margin-top:24px; padding:18px 0; border-top:1px solid var(--rule);
+  color:var(--muted); font-size:.95rem
+}
+
+/* ===== Utility ===== */
+.disclaimer small{color:#64748b}
+ul{margin:8px 0 0 18px}
+
+/* ===== Responsive ===== */
+@media (max-width:720px){
+  .container{padding:16px}
+  .btn{display:inline-block; margin-top:8px}
+}
