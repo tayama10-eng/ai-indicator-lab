@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pricing — AI Indicator Lab</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body{margin:0;font-family:"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:#0f172a;color:#f9fafb;line-height:1.6}
+    header{background:#0f172a;padding:20px 28px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #1e293b}
+    header h1{margin:0;font-size:1.4rem;color:#38bdf8}
+    nav a{color:#e2e8f0;text-decoration:none;margin-left:18px;font-weight:500}
+    nav a:hover{color:#38bdf8}
+
+    .section{max-width:1100px;margin:40px auto;padding:0 20px;text-align:center}
+    h2{font-size:2rem;margin-bottom:20px;color:#f9fafb}
+    .grid{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+    .card{background:#1e293b;padding:28px;border-radius:14px;box-shadow:0 4px 12px rgba(0,0,0,.35);display:flex;flex-direction:column;align-items:center}
+    .card h3{margin-top:0;color:#38bdf8}
+    .desc{color:#cbd5e1;min-height:72px}
+    .price{font-size:1.6rem;font-weight:800;margin:10px 0 4px 0;color:#fff}
+    .sub{color:#93c5fd;font-weight:600}
+    .yen{color:#cbd5e1;font-size:.95rem;margin-top:6px}
+    .btn{display:inline-block;padding:14px 26px;border-radius:10px;font-weight:700;text-decoration:none;font-size:1.05rem;margin-top:14px;background:#38bdf8;color:#0f172a}
+    .btn:hover{background:#0ea5e9}
+
+    .switcher{display:flex;gap:10px;justify-content:center;margin:10px 0 26px 0}
+    .pill{padding:8px 12px;border-radius:999px;background:#0b1220;border:1px solid #334155;color:#cbd5e1;font-size:.92rem}
+    .note{max-width:900px;margin:18px auto 0 auto;color:#93a4c1;font-size:.9rem}
+
+    footer{margin-top:40px;padding:20px;text-align:center;background:#0f172a;color:#94a3b8;font-size:.9rem;border-top:1px solid #1e293b}
+    footer a{color:#38bdf8}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>AI Indicator Lab</h1>
+    <nav>
+      <a href="./index.html">Overview</a>
+      <a href="./pricing.html">Pricing</a>
+      <a href="./legal.html">Terms</a>
+      <a href="./privacy.html">Privacy</a>
+      <a href="./tokutei.html">Legal (JP)</a>
+    </nav>
+  </header>
+
+  <section class="section">
+    <h2>Choose Your Grade</h2>
+    <div class="switcher">
+      <span class="pill">Display currency: USD</span>
+      <span class="pill">Billing currency: JPY via Square</span>
+    </div>
+
+    <div class="grid">
+      <!-- Grade 1 -->
+      <div class="card">
+        <h3>Grade 1</h3>
+        <p class="desc">Access to all published MT5 indicators and research notes.</p>
+        <div class="price">$15 <span class="sub">/ month</span></div>
+        <div class="yen">Billed as <strong>¥2,000 / month</strong> via Square</div>
+        <a href="https://square.link/u/S3BBDShL" class="btn">Subscribe — Monthly</a>
+
+        <div style="height:10px"></div>
+        <div class="price" style="font-size:1.3rem">$150 <span class="sub">/ year</span></div>
+        <div class="yen">Billed as <strong>¥20,000 / year</strong> via Square</div>
+        <a href="https://square.link/u/OsoxArbe" class="btn">Subscribe — Annual</a>
+      </div>
+
+      <!-- Grade 2 -->
+      <div class="card">
+        <h3>Grade 2</h3>
+        <p class="desc">All Grade 1 features, plus the right to submit requests and suggestions for future indicators.</p>
+        <div class="price">$25 <span class="sub">/ month</span></div>
+        <div class="yen">Billed as <strong>¥3,300 / month</strong> via Square</div>
+        <a href="https://square.link/u/JKIQIGKD" class="btn">Subscribe — Monthly</a>
+
+        <div style="height:10px"></div>
+        <div class="price" style="font-size:1.3rem">$250 <span class="sub">/ year</span></div>
+        <div class="yen">Billed as <strong>¥33,000 / year</strong> via Square</div>
+        <a href="https://square.link/u/CfF8MACh" class="btn">Subscribe — Annual</a>
+      </div>
+
+      <!-- Grade 3 -->
+      <div class="card">
+        <h3>Grade 3</h3>
+        <p class="desc">All Grade 2 features, plus up to <strong>2 custom EA build requests / month</strong>. Unlimited bug fixes.</p>
+        <div class="price">$55 <span class="sub">/ month</span></div>
+        <div class="yen">Billed as <strong>¥7,300 / month</strong> via Square</div>
+        <a href="https://square.link/u/JtKfSKFd" class="btn">Subscribe — Monthly</a>
+
+        <div style="height:10px"></div>
+        <div class="price" style="font-size:1.3rem">$450 <span class="sub">/ year</span></div>
+        <div class="yen">Billed as <strong>¥59,000 / year</strong> via Square</div>
+        <a href="https://square.link/u/rDAdnIUP" class="btn">Subscribe — Annual</a>
+      </div>
+    </div>
+
+    <p class="note">
+      * USD amounts are for reference. Final billing is processed in Japanese Yen (JPY) by Square.  
+      Your card issuer’s exchange rate and fees may cause slight differences from the USD reference.
+    </p>
+  </section>
+
+  <footer>
+    © 2025 AI Indicator Lab — <a href="./legal.html">Terms</a> · <a href="./privacy.html">Privacy</a> · <a href="./tokutei.html">特商法表記</a>
+  </footer>
+</body>
+</html>
