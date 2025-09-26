@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Members — AI Indicator Lab</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <style>
+    :root{
+      --bg:#0f172a;      /* base dark navy */
+      --paper:#1e293b;   /* card */
+      --ink:#e5f0ff;     /* body text */
+      --muted:#b6c2d9;   /* secondary text */
+      --rule:#334155;    /* borders */
+      --accent:#38bdf8;  /* CTA/cyan */
+      --codebg:#0b1220;  /* code area */
+      --codeink:#c8e1ff; /* code text */
+      --maxw:900px;
+      --radius:14px;
+      --shadow:0 10px 30px rgba(0,0,0,.25);
+    }
+    /* light theme */
+    :root[data-theme="light"]{
+      --bg:#f7fafc;
+      --paper:#ffffff;
+      --ink:#0f172a;
+      --muted:#475569;
+      --rule:#e5e7eb;
+      --accent:#0284c7;
+      --codebg:#0f172a;
+      --codeink:#e5f0ff;
+      --shadow:0 8px 24px rgba(15,23,42,.08);
+    }
+
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      background:var(--bg);
+      color:var(--ink);
+      line-height:1.8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:28px 18px 60px}
+    header{
+      display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px
+    }
+    h1{font-size:1.8rem;margin:0;color:var(--accent);letter-spacing:.2px}
+    .meta{color:var(--muted);font-size:.95rem;margin:6px 0 12px}
+
+    /* top tools: toc + theme switch */
+    .tools{position:sticky;top:0;background:var(--bg);padding:10px 0;z-index:5}
+    .toc{display:flex;flex-wrap:wrap;gap:8px}
+    .pill{
+      display:inline-block;padding:6px 10px;border-radius:999px;
+      border:1px solid var(--rule);background:transparent;color:var(--ink);
+      text-decoration:none;font-size:.92rem
+    }
+    .pill:hover{background:var(--paper)}
+    .right-tools{margin-top:10px;display:flex;gap:10px}
+    .btn{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:10px 14px;border-radius:10px;border:1px solid var(--rule);
+      background:var(--paper);color:var(--ink);text-decoration:none;font-weight:600;
+      box-shadow:var(--shadow)
+    }
+    .btn-primary{background:var(--accent);color:#0f172a;border-color:transparent}
+    .btn:hover{opacity:.95}
+
+    .section{background:var(--paper);border:1px solid var(--rule);border-radius:var(--radius);
+      box-shadow:var(--shadow);padding:22px;margin:18px 0}
+    .section h2{margin:0 0 8px 0;font-size:1.15rem;color:var(--accent)}
+    .week{border:1px solid var(--rule);border-radius:12px;padding:16px;margin:16px 0;background:transparent}
+    .week h3{margin:0 0 8px 0}
+    .tag{display:inline-block;margin-left:8px;padding:2px 8px;border-radius:999px;border:1px solid var(--rule);color:var(--muted);font-size:.85rem}
+    details{background:transparent;border:1px dashed var(--rule);border-radius:10px;margin:12px 0;padding:10px}
+    details>summary{cursor:pointer;font-weight:700}
+
+    /* code block with copy */
+    .code-wrap{position:relative;margin-top:10px}
+    .code{
+      background:var(--codebg);color:var(--codeink);
+      border-radius:10px;padding:12px 14px;overflow:auto;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size:.95rem; line-height:1.6;
+      counter-reset: line;
+      white-space: pre;
+    }
+    .code code{white-space: pre}
+    .copy{
+      position:absolute;top:10px;right:10px;
+      font-size:.85rem;padding:6px 10px;border-radius:8px;border:1px solid #3b82f6;
+      background:#3b82f6;color:#fff;cursor:pointer
+    }
+    .ln{counter-increment: line}
+    .ln:before{
+      content: counter(line);
+      display:inline-block; width:2.2em; margin-right:12px; text-align:right; opacity:.5
+    }
+
+    footer{margin-top:26px;color:var(--muted);font-size:.9rem;text-align:center}
+    @media (min-width:880px){ .wrap{padding:34px 24px 70px} }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Members Area</h1>
+      <a class="btn" href="./index.html">Back to Overview</a>
+    </header>
+    <p class="meta">
+      Private access for subscribers. Please do not share this URL.
+      For Grade 3 EA requests: <a href="mailto:tayama10@icloud.com" style="color:var(--accent)">tayama10@icloud.com</a>
+    </p>
+
+    <div class="tools">
+      <div class="toc">
+        <a class="pill" href="#latest">⬇️ Jump to Latest Week</a>
+        <a class="pill" href="#m1w1">Month 1 — Week 1</a>
+        <a class="pill" href="#m1w2">Month 1 — Week 2</a>
+        <a class="pill" href="#m1w3">Month 1 — Week 3</a>
+      </div>
+      <div class="right-tools">
+        <button id="themeToggle" class="btn">🌗 Toggle Theme</button>
+      </div>
+    </div>
+
+    <section class="section">
+      <h2>📊 Weekly Indicators</h2>
+
+      <!-- Week 1 -->
+      <article id="m1w1" class="week">
+        <h3>Month 1 — Week 1: Entropy Volatility Oscillator (EVO) <span class="tag">Trend Filter</span></h3>
+        <details open>
+          <summary>Concept / Logic / Use case</summary>
+          <p><strong>Concept:</strong> EVO measures unpredictability using rolling Shannon entropy of log returns. Low entropy → structured trends; high entropy → choppy noise.</p>
+          <p><strong>Logic:</strong> Log returns → histogram binning → windowed entropy → normalized 0–100. Thresholds: &lt;30 trend-friendly, &gt;70 chop.</p>
+          <p><strong>Use case:</strong> Use as regime filter. Combine with MA cross or Donchian breakout.</p>
+        </details>
+        <div class="code-wrap">
+          <button class="copy" data-target="code-evo">Copy</button>
+          <pre id="code-evo" class="code"><code><span class="ln">// EVO (excerpt)</span>
+<span class="ln">#property indicator_separate_window</span>
+<span class="ln">#property indicator_buffers 1</span>
+<span class="ln">input int EvoWindow=50, Bins=7; // ...</span>
+<span class="ln">/* full MQ5 from前回版をここに貼ってOK */</span></code></pre>
+        </div>
+      </article>
+
+      <!-- Week 2 -->
+      <article id="m1w2" class="week">
+        <h3>Month 1 — Week 2: Liquidity Gap Detector (LGD) <span class="tag">Mean Reversion</span></h3>
+        <details>
+          <summary>Concept / Logic / Use case</summary>
+          <p><strong>Concept:</strong> Finds inter-bar “voids” (minimal overlap) likely to be revisited.</p>
+          <p><strong>Logic:</strong> Overlap ratio between consecutive bars &lt; threshold → draw rectangle gap.</p>
+          <p><strong>Use case:</strong> Targets for mean-reversion; stops beyond void.</p>
+        </details>
+        <div class="code-wrap">
+          <button class="copy" data-target="code-lgd">Copy</button>
+          <pre id="code-lgd" class="code"><code><span class="ln">// LGD (excerpt)</span>
+<span class="ln">#property indicator_chart_window</span>
+<span class="ln">input double OverlapThreshold=0.10; // ...</span>
+<span class="ln">/* full MQ5 from前回版をここに貼ってOK */</span></code></pre>
+        </div>
+      </article>
+
+      <!-- Week 3 (latest) -->
+      <article id="latest" class="week">
+        <h3>Month 1 — Week 3: Adaptive Fractal Momentum (AFM) <span class="tag">Momentum</span></h3>
+        <details>
+          <summary>Concept / Logic / Use case</summary>
+          <p><strong>Concept:</strong> Momentum that self-tunes by market structure (fractal proxy).</p>
+          <p><strong>Logic:</strong> Fractal proxy from range/ATR → map to smoothing → normalized momentum 0–100.</p>
+          <p><strong>Use case:</strong> Noise-aware momentum; confirm >60 in trends, avoid &lt;40 in ranges.</p>
+        </details>
+        <div class="code-wrap">
+          <button class="copy" data-target="code-afm">Copy</button>
+          <pre id="code-afm" class="code"><code><span class="ln">// AFM (excerpt)</span>
+<span class="ln">#property indicator_separate_window</span>
+<span class="ln">input int BasePeriod=14, SmoothMin=3, SmoothMax=30; // ...</span>
+<span class="ln">/* full MQ5 from前回版をここに貼ってOK */</span></code></pre>
+        </div>
+      </article>
+
+    </section>
+
+    <footer>© 2025 AI Indicator Lab — Private content for subscribers (noindex)</footer>
+  </div>
+
+  <script>
+    // Theme toggle with persistence
+    const root=document.documentElement;
+    const key='ailab-theme';
+    const btn=document.getElementById('themeToggle');
+    const saved=localStorage.getItem(key);
+    if(saved){ root.setAttribute('data-theme', saved); }
+    btn.addEventListener('click', ()=>{
+      const cur=root.getAttribute('data-theme')==='light'?'dark':'light';
+      if(cur==='light'){ root.setAttribute('data-theme','light'); localStorage.setItem(key,'light'); btn.textContent='🌘 Toggle Theme'; }
+      else{ root.removeAttribute('data-theme'); localStorage.setItem(key,'dark'); btn.textContent='🌗 Toggle Theme'; }
+    });
+
+    // Copy buttons
+    document.querySelectorAll('.copy').forEach(b=>{
+      b.addEventListener('click', async ()=>{
+        const id=b.getAttribute('data-target');
+        const el=document.getElementById(id);
+        const text=el.innerText.replace(/^\d+\s/gm, ''); // remove line numbers if any
+        try{
+          await navigator.clipboard.writeText(text);
+          const before=b.textContent;
+          b.textContent='Copied!';
+          setTimeout(()=>b.textContent=before,1200);
+        }catch(e){
+          alert('Copy failed');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
