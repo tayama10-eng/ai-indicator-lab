@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Members — AI Indicator Lab</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Search avoidance -->
+  <meta name="robots" content="noindex, nofollow" />
+  <style>
+    :root{
+      --bg:#0f172a; --paper:#1e293b; --ink:#e5f0ff; --muted:#b6c2d9; --rule:#334155;
+      --accent:#38bdf8; --codebg:#0b1220; --codeink:#c8e1ff;
+      --maxw:900px; --radius:14px; --shadow:0 10px 30px rgba(0,0,0,.25);
+    }
+    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.8}
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:28px 18px 60px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
+    h1{font-size:1.9rem;margin:0;color:var(--accent)}
+    .meta{color:var(--muted);font-size:.95rem;margin:6px 0 12px}
+    .tools{position:sticky;top:0;background:var(--bg);padding:10px 0;z-index:5}
+    .toc{display:flex;flex-wrap:wrap;gap:8px}
+    .pill{display:inline-block;padding:6px 10px;border-radius:999px;border:1px solid var(--rule);color:var(--ink);text-decoration:none;font-size:.92rem}
+    .pill:hover{background:var(--paper)}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);text-decoration:none;font-weight:600;box-shadow:var(--shadow)}
+    .btn-primary{background:var(--accent);color:#0f172a;border-color:transparent}
+    .section{background:var(--paper);border:1px solid var(--rule);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px;margin:18px 0}
+    .section h2{margin:0 0 8px 0;font-size:1.15rem;color:var(--accent)}
+    .week{border:1px solid var(--rule);border-radius:12px;padding:16px;margin:16px 0}
+    .week h3{margin:0 0 8px 0}
+    .tag{display:inline-block;margin-left:8px;padding:2px 8px;border-radius:999px;border:1px solid var(--rule);color:var(--muted);font-size:.85rem}
+    details{background:transparent;border:1px dashed var(--rule);border-radius:10px;margin:12px 0;padding:10px}
+    details>summary{cursor:pointer;font-weight:700}
+    .code-wrap{position:relative;margin-top:10px}
+    .code{background:var(--codebg);color:var(--codeink);border-radius:10px;padding:12px 14px;overflow:auto;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;font-size:.95rem;line-height:1.6;white-space:pre}
+    .copy{position:absolute;top:10px;right:10px;font-size:.85rem;padding:6px 10px;border-radius:8px;border:1px solid #3b82f6;background:#3b82f6;color:#fff;cursor:pointer}
+    .howto{background:#0f172a;border:1px solid var(--rule);border-radius:10px;padding:12px}
+    .sep{height:1px;background:#334155;margin:20px 0}
+    footer{margin-top:26px;color:var(--muted);font-size:.9rem;text-align:center}
+    a{color:var(--accent);text-decoration:none}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Members Area</h1>
+      <a class="btn" href="./index.html">Back to Overview</a>
+    </header>
+    <p class="meta">
+      Private access for subscribers. Please do not share this URL.  
+      For Grade 3 EA requests: <a href="mailto:tayama10@icloud.com">tayama10@icloud.com</a>
+    </p>
+
+    <!-- Quick Jump -->
+    <div class="tools">
+      <nav class="toc">
+        <a class="pill" href="#latest">⬇️ Jump to Latest Week</a>
+        <a class="pill" href="#m1w1">Month 1 — Week 1</a>
+        <a class="pill" href="#m1w2">Month 1 — Week 2</a>
+        <a class="pill" href="#m1w3">Month 1 — Week 3</a>
+      </nav>
+    </div>
+
+    <section class="section">
+      <h2>📊 Weekly Indicators</h2>
+
+      <!-- ========================= -->
+      <!-- Month 1 — Week 1 (EVO)   -->
+      <!-- ========================= -->
+      <article id="m1w1" class="week">
+        <h3>Month 1 — Week 1: Entropy Volatility Oscillator (EVO) <span class="tag">Trend Filter</span></h3>
+        <details open>
+          <summary>Concept / Logic / Use case</summary>
+          <p><strong>Concept:</strong> EVO measures unpredictability using rolling Shannon entropy of log returns. Low entropy &rarr; structured/trend-prone; high entropy &rarr; choppy/noisy.</p>
+          <p><strong>Logic:</strong> Compute log returns &rarr; bin into histogram &rarr; rolling entropy over a window &rarr; normalize to 0&ndash;100. Typical thresholds: &lt;30 trend-friendly, &gt;70 chop.</p>
+          <p><strong>Use case:</strong> Use EVO as a regime filter. Take trend setups only when EVO is low; reduce exposure or stand aside in high-entropy regimes. Combine with MA cross, Donchian breakout, or ATR channels.</p>
+        </details>
+
+        <div class="howto">
+          <strong>How to use (MT5):</strong><br>
+          1) Copy the code below into MetaEditor &rarr; <em>Indicators</em> &rarr; New &rarr; paste &rarr; save as <code>EVO.mq5</code> &rarr; Compile.<br>
+          2) Attach to a chart. Adjust <code>EvoWindow</code> (e.g., 50) and <code>Bins</code> (e.g., 7).<br>
+          3) Signals: EVO &lt; 30 → favor trend-following entries; EVO &gt; 70 → avoid new entries or scale down.<br>
+          4) Works best on H1–H4; try D1 for swing filtering.
+        </div>
+
+        <div class="code-wrap">
+          <button class="copy" data-target="code-evo">Copy</button>
+          <pre id="code-evo" class="code">
+//+------------------------------------------------------------------+
+//| Entropy Volatility Oscillator (EVO) — AI Indicator Lab          |
+//| MT5 Indicator (place under MQL5/Indicators/)                    |
+//+------------------------------------------------------------------+
+#property indicator_separate_window
+#property indicator_buffers 1
+#property indicator_plots   1
+#property indicator_label1  "EVO"
+#property indicator_type1   DRAW_LINE
+#property indicator_color1  clrDeepSkyBlue
+#property indicator_style1  STYLE_SOLID
+#property indicator_width1  2
+
+input int      EvoWindow   = 50;      // Entropy window
+input int      Bins        = 7;       // Histogram bins (3..12)
+input double   MinRet      = -0.01;   // Lower bound for binning (~1%)
+input double   MaxRet      =  0.01;   // Upper bound for binning (~1%)
+
+double EvoBuffer[];
+
+int OnInit(){
+   SetIndexBuffer(0,EvoBuffer,INDICATOR_DATA);
+   IndicatorSetInteger(INDICATOR_MINIMUM,0);
+   IndicatorSetInteger(INDICATOR_MAXIMUM,100);
+   return(INIT_SUCCEEDED);
+}
+
+int RetToBin(double r){
+   if(r<=MinRet) return 0;
+   if(r>=MaxRet) return Bins-1;
+   double step=(MaxRet-MinRet)/(Bins-1);
+   return (int)MathFloor((r-MinRet)/step+0.5);
+}
+
+int OnCalculate(const int rates_total,
+                const int prev_calculated,
+                const int begin,
+                const double &price[]){
+   if(rates_total<EvoWindow+2) return(0);
+
+   int start = MathMax(prev_calculated-1, EvoWindow+2);
+   if(start<0) start=EvoWindow+2;
+
+   static double close[];
+   ArraySetAsSeries(close,true);
+   CopyClose(Symbol(),Period(),0,rates_total,close);
+
+   int bins = MathMax(3, MathMin(12, Bins));
+   for(int i=start; i<rates_total; i++){
+      int win = EvoWindow;
+      if(i-win-1<0) continue;
+
+      int counts[21]; ArrayInitialize(counts,0); // up to 21 bins
+
+      for(int k=0; k<win; k++){
+         double r = MathLog(close[i-k]/close[i-k-1]);
+         int b = MathMax(0, MathMin(bins-1, RetToBin(r)));
+         counts[b]++;
+      }
+      // Shannon entropy (natural log)
+      double H=0.0;
+      for(int b=0;b<bins;b++){
+         if(counts[b]<=0) continue;
+         double p=(double)counts[b]/(double)win;
+         H -= p*MathLog(p);
+      }
+      double Hmax = MathLog((double)bins);
+      double evo  = (H/Hmax)*100.0;
+      EvoBuffer[i]=evo;
+   }
+   return(rates_total);
+}
+          </pre>
+        </div>
+      </article>
+
+      <div class="sep"></div>
+
+      <!-- ========================= -->
+      <!-- Month 1 — Week 2 (LGD)   -->
+      <!-- ========================= -->
+      <article id="m1w2" class="week">
+        <h3>Month 1 — Week 2: Liquidity Gap Detector (LGD) <span class="tag">Mean Reversion</span></h3>
+        <details>
+          <summary>Concept / Logic / Use case</summary>
+          <p><strong>Concept:</strong> Detects inter-bar "liquidity voids" where consecutive candles barely overlap. These voids are often revisited (filled) later.</p>
+          <p><strong>Logic:</strong> For each adjacent bar pair, compute overlap ratio of their [Low, High] intervals.
+            If overlap &lt; threshold (e.g., 10%), mark a rectangle between them as a gap zone.</p>
+          <p><strong>Use case:</strong> Mean-reversion targets into prior voids; place stops beyond the rectangle high/low.</p>
+        </details>
+
+        <div class="howto">
+          <strong>How to use (MT5):</strong><br>
+          1) Save as <code>LGD.mq5</code> under <em>MQL5/Indicators/</em> &rarr; Compile.<br>
+          2) Attach to chart. Tune <code>OverlapThreshold</code> (0.05–0.20) and <code>LookbackBars</code>.<br>
+          3) Blue rectangles indicate potential liquidity voids. Consider profit targets on first revisit of the zone.<br>
+          4) Works well on M15–H4 for FX; try indices/crypto with adjusted thresholds.
+        </div>
+
+        <div class="code-wrap">
+          <button class="copy" data-target="code-lgd">Copy</button>
+          <pre id="code-lgd" class="code">
+//+------------------------------------------------------------------+
+//| Liquidity Gap Detector (LGD) — AI Indicator Lab                  |
+//| MT5 Indicator (draws rectangles for low-overlap bar pairs)       |
+//+------------------------------------------------------------------+
+#property indicator_chart_window
+input double OverlapThreshold = 0.10;  // 10% overlap considered a void
+input int    LookbackBars     = 500;   // bars to scan
+input color  GapColor         = clrRoyalBlue;
+input int    Opacity          = 40;    // 0..255 (rectangle transparency)
+
+string RectName(int i){ return "LGD_"+IntegerToString(i); }
+
+int OnInit(){ return(INIT_SUCCEEDED); }
+
+int OnCalculate(const int rates_total,
+                const int prev_calculated,
+                const int begin,
+                const double &price[]){
+   if(rates_total<3) return(0);
+
+   int start = (prev_calculated>0 ? prev_calculated-1 : 1);
+   int from  = MathMax(1, rates_total - MathMax(LookbackBars,100));
+
+   // Clean old rectangles beyond lookback
+   for(int j=0;j<from-2;j++){
+      string name=RectName(j);
+      if(ObjectFind(0,name)>=0) ObjectDelete(0,name);
+   }
+
+   MqlRates rates[];
+   ArraySetAsSeries(rates,true);
+   CopyRates(Symbol(),Period(),0,rates_total,rates);
+
+   for(int i=MathMax(start,from); i<rates_total; i++){
+      double h1=rates[i].high, l1=rates[i].low;
+      double h2=rates[i-1].high, l2=rates[i-1].low;
+
+      double top = MathMin(h1,h2);
+      double bot = MathMax(l1,l2);
+      double overlap = MathMax(0.0, top-bot);
+      double uTop = MathMax(h1,h2), uBot = MathMin(l1,l2);
+      double unionLen = MathMax(0.0, uTop - uBot);
+      if(unionLen<=0) continue;
+
+      double ratio = overlap/unionLen;
+
+      if(ratio < OverlapThreshold){
+         // define gap zone between bar times; extend slightly into next bar
+         datetime t1 = rates[i-1].time;
+         datetime t2 = rates[i].time + (rates[i].time - rates[i-1].time)/2;
+         string name = RectName(i);
+         if(ObjectFind(0,name)>=0) ObjectDelete(0,name);
+
+         // Use ARGB color to apply opacity
+         color fill = ColorToARGB(GapColor, Opacity);
+
+         ObjectCreate(0,name,OBJ_RECTANGLE,0,t1,bot,t2,top);
+         ObjectSetInteger(0,name,OBJPROP_BACK,true);
+         ObjectSetInteger(0,name,OBJPROP_FILL,true);
+         ObjectSetInteger(0,name,OBJPROP_COLOR,fill);
+         ObjectSetInteger(0,name,OBJPROP_STYLE,STYLE_SOLID);
+         ObjectSetInteger(0,name,OBJPROP_WIDTH,1);
+      }
+   }
+   return(rates_total);
+}
+          </pre>
+        </div>
+      </article>
+
+      <div class="sep"></div>
+
+      <!-- ========================= -->
+      <!-- Month 1 — Week 3 (AFM)   -->
+      <!-- ========================= -->
+      <article id="latest" class="week">
+        <h3>Month 1 — Week 3: Adaptive Fractal Momentum (AFM) <span class="tag">Momentum</span></h3>
+        <details>
+          <summary>Concept / Logic / Use case</summary>
+          <p><strong>Concept:</strong> Momentum that self-tunes with market structure. When price behaves more trend-like (lower fractal dimension proxy), AFM speeds up; in noisy ranges (higher proxy), AFM slows down.</p>
+          <p><strong>Logic:</strong> Estimate a simple fractal proxy from rolling range vs. ATR; map it to a dynamic EMA smoothing; output normalized 0&ndash;100 momentum.</p>
+          <p><strong>Use case:</strong> Noise-aware momentum line. Look for cross-ups above 60 during trends; avoid signals when AFM remains &lt; 40 in ranges.</p>
+        </details>
+
+        <div class="howto">
+          <strong>How to use (MT5):</strong><br>
+          1) Save as <code>AFM.mq5</code> &rarr; Compile &rarr; Attach to chart.<br>
+          2) Parameters: <code>BasePeriod</code> (e.g., 14), <code>SmoothMin/SmoothMax</code> (3/30), <code>MapWindow</code> (50).<br>
+          3) Signals: Rising through 50→60 with price above MA suggests trend momentum building; falling under 40 indicates ranging/noise.<br>
+          4) Suggested TF: H1–H4 (swing/positionならD1も可)。
+        </div>
+
+        <div class="code-wrap">
+          <button class="copy" data-target="code-afm">Copy</button>
+          <pre id="code-afm" class="code">
+//+------------------------------------------------------------------+
+//| Adaptive Fractal Momentum (AFM) — AI Indicator Lab               |
+//| MT5 Indicator (0–100 normalized momentum with adaptive smoothing)|
+//+------------------------------------------------------------------+
+#property indicator_separate_window
+#property indicator_buffers 1
+#property indicator_plots   1
+#property indicator_label1  "AFM"
+#property indicator_type1   DRAW_LINE
+#property indicator_color1  clrDeepSkyBlue
+#property indicator_width1  2
+
+input int    BasePeriod   = 14;   // base lookback for ROC
+input int    SmoothMin    = 3;    // fastest smoothing when trending
+input int    SmoothMax    = 30;   // slowest smoothing when ranging
+input int    MapWindow    = 50;   // window for fractal proxy (range vs ATR)
+
+double Afm[];
+
+int OnInit(){
+   SetIndexBuffer(0,Afm,INDICATOR_DATA);
+   IndicatorSetInteger(INDICATOR_MINIMUM,0);
+   IndicatorSetInteger(INDICATOR_MAXIMUM,100);
+   return(INIT_SUCCEEDED);
+}
+
+// proxy for "trend-likeness": range/(ATR*sqrt(n)) mapped to [0,1]
+double FractalProxy(int i, int n){
+   if(i-n<1) return 0.5;
+   int hiIndex = iHighest(Symbol(),Period(),MODE_HIGH,n,i-n+1);
+   int loIndex = iLowest(Symbol(),Period(),MODE_LOW,n,i-n+1);
+   double hi = iHigh(Symbol(),Period(),hiIndex);
+   double lo = iLow (Symbol(),Period(),loIndex);
+   double range = hi - lo;
+   double atr = iATR(Symbol(),Period(),n,i);
+   if(atr<=0) atr=0.0000001;
+   double proxy = range / (atr * MathSqrt(n));
+   // clamp and map to [0,1]: small→noisy, large→directional
+   double p = MathMin(3.0,MathMax(0.2,proxy));
+   return (p-0.2)/(3.0-0.2);
+}
+
+double EmaStep(double prev,double cur,double alpha){ return prev + alpha*(cur-prev); }
+
+int OnCalculate(const int rates_total,
+                const int prev_calculated,
+                const int begin,
+                const double &price[]){
+   if(rates_total<MathMax(MapWindow,BasePeriod)+2) return(0);
+
+   static double close[];
+   ArraySetAsSeries(close,true);
+   CopyClose(Symbol(),Period(),0,rates_total,close);
+
+   int start=MathMax(prev_calculated-1, BasePeriod+2);
+   if(start<0) start=BasePeriod+2;
+
+   double prev=50.0;
+   for(int i=start;i<rates_total;i++){
+      // raw momentum: simple rate of change (unscaled)
+      double roc = (close[i]-close[i-BasePeriod]);
+      // normalize via tanh to 0..100 scale
+      double norm = 50.0 + 50.0 * MathTanh( roc / (Point()*BasePeriod*10.0) );
+
+      // map fractal proxy to smoothing length [SmoothMin..SmoothMax]
+      double fp = FractalProxy(i, MapWindow);
+      int smooth = (int)MathRound( SmoothMax - fp*(SmoothMax-SmoothMin) );
+      smooth = MathMax(1, MathMin(200, smooth));
+      double alpha = 2.0/(smooth+1.0);
+
+      prev = EmaStep(prev, norm, alpha);
+      Afm[i]=MathMax(0.0,MathMin(100.0,prev));
+   }
+   return(rates_total);
+}
+          </pre>
+        </div>
+      </article>
+
+    </section>
+
+    <footer>© 2025 AI Indicator Lab — Private content for subscribers (noindex)</footer>
+  </div>
+
+  <script>
+    // Copy buttons
+    document.querySelectorAll('.copy').forEach(b=>{
+      b.addEventListener('click', async ()=>{
+        const id=b.getAttribute('data-target');
+        const el=document.getElementById(id);
+        const text=el.innerText;
+        try{
+          await navigator.clipboard.writeText(text);
+          const t=b.textContent; b.textContent='Copied!'; setTimeout(()=>b.textContent=t,1200);
+        }catch(e){ alert('Copy failed'); }
+      });
+    });
+  </script>
+</body>
+</html>
